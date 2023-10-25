@@ -1,4 +1,4 @@
-# 📦 Streamlit App Starter Kit 
+# 📦 MyChatBot 
 ```
 ⬆️ (Replace above with your app's name)
 ```
