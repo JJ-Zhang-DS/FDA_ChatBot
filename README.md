@@ -1,10 +1,9 @@
 # FDA_stastics_ChatBot 
 ```
-This is a ChatBot for the project of NLP class. The aim is to help you get FDA guidline for the statistical requirement during drug discoveries. 
+This is a ChatBot for the project of NLP class. 
 ```
 
-Description of the app ...
-
+The aim is to help you get FDA guidline for the statistical requirement during drug discoveries. 
 ## Demo App
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-starter-kit.streamlit.app/)
