@@ -1,6 +1,6 @@
-# 📦 MyChatBot 
+# FDA_stastics_ChatBot 
 ```
-⬆️ (Replace above with your app's name)
+This is a ChatBot for the project of NLP class. The aim is to help you get FDA guidline for the statistical requirement during drug discoveries. 
 ```
 
 Description of the app ...
