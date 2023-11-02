@@ -1,1 +1,36 @@
+the documents list for this project.
+
+
+GenAI Project input data collection
+Notes by Shuming on 28Oct 2023
+
+FDA guidance documents website: 
+https://www.fda.gov/industry/fda-basics-industry/guidances
+https://www.fda.gov/regulatory-information/search-fda-guidance-documents
+
+Here is a list of about 20 FDA guidance files related to statistics in drug and device trials:
+
+"Guidance for Industry: E9 Statistical Principles for Clinical Trials"
+"Guidance for Industry: Statistical Approaches to Establishing Bioequivalence"
+"Guidance for Industry: Adaptive Design Clinical Trials for Drugs and Biologics"
+"Guidance for Industry: Statistical Guidance on Reporting Results from Studies Evaluating Diagnostic Tests"
+"Guidance for Industry: Non-Inferiority Clinical Trials"
+"Guidance for Industry: General Considerations for Pediatric Pharmacokinetic Studies for Drugs and Biological Products"
+"Guidance for Industry: Clinical Trials in Small Populations"
+"Guidance for Industry: Adaptive Designs for Medical Device Clinical Studies"
+"Guidance for Industry: Bayesian Statistics in Medical Device Clinical Trials"
+"Guidance for Industry: Statistical Aspects of the Design, Analysis, and Presentation of Tumor Dose Response Information"
+"Guidance for Industry: Population Pharmacokinetics"
+"Guidance for Industry: Statistical Approaches to Analyzing the Safety Data in an Application for a Medical Product"
+"Guidance for Industry: Safety Testing of Drug Metabolites"
+"Guidance for Industry: Collection of Race and Ethnicity Data in Clinical Trials"
+"Guidance for Industry: Intent-to-Treat Analysis"
+"Guidance for Industry: Time-to-Event Endpoints in Clinical Trials"
+"Guidance for Industry: Adaptive Clinical Trials for Drugs and Biologics"
+"Guidance for Industry: Statistical Considerations for Clinical Trial Design"
+"Guidance for Industry: Design and Analysis of Subgroup Analyses in Clinical Trials"
+"Guidance for Industry: Clinical Pharmacogenomics: Premarketing Evaluation in Early Phase Clinical Studies"
+"Guidance for Industry: Drug-Drug Interaction Guideline"
+"Guidance for Industry: Exposure-Response Relationships: Study Design, Data Analysis, and Regulatory Applications"
+"Guidance for Industry: Statistical Approaches to Analyzing QT Interval Prolongation in Clinical Trials"
 
