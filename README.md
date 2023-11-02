@@ -1,4 +1,4 @@
-# FDA_stastics_ChatBot 
+# FDA_STAT_ChatBot 
 ```
 This is a ChatBot for the project of NLP class. 
 ```
