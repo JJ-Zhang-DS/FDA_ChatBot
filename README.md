@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ```
 
 - Testcase: with user's data
-* Note: you need to get your openAI API key ready at this step and store it in the file `secrets.toml` under `.streamlit` directory.
+	* Note: you need to get your openAI API key ready at this step and store it in the file `secrets.toml` under `.streamlit` directory.
 
 ```
 cd with_data
@@ -39,13 +39,13 @@ Use your favorite text editor to modify the file `secrets.toml` under `.streamli
 openai_key = "<your own openai api key>"
 ```
 
-* Run on your local server
+	* Run on your local server
 ```
 streamlit run streamlit_app.py
 ```
 
 - Testcase: without user's data
-* Note: you need to get your openAI API key ready at this step and store it in the file `secrets.toml` under `.streamlit` directory.
+	* Note: you need to get your openAI API key ready at this step and store it in the file `secrets.toml` under `.streamlit` directory.
 
 ```
 cd wo_data
@@ -58,7 +58,7 @@ Use your favorite text editor to modify the file `secrets.toml` under `.streamli
 openai_key = "<your own openai api key>"
 ```
 
-* Run on your local server
+	* Run on your local server
 ```
 streamlit run streamlit_app.py
 ```
