@@ -52,7 +52,7 @@ with open("../answers.txt", 'r') as f:
 #    responses = st.session_state.chat_engine.chat(prompt)
 #    chat_answers.append(responses)
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 # class BertEmbedding(nn.Module):
 #     def __init__(self, dropout=0.5):
@@ -70,7 +70,7 @@ tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
 #         return token_embeddings
 # model = BertEmbedding(dropout=0)
 
-model = BertModel.from_pretrained('bert-base-cased')
+model = BertModel.from_pretrained('bert-base-uncased')
 cossim_total = []
 for idx, question in enumerate(questions):
     prompt = question
@@ -90,14 +90,14 @@ for idx, question in enumerate(questions):
             response = st.session_state.chat_engine.chat(prompt)
             st.write(response.response)
             res_token = tokenizer(
-                [response.response], max_length=256, padding='max_length', truncation=True)
+                [response.response], max_length=128, padding='max_length', truncation=True)
             with torch.no_grad():
                 res = model(
                     torch.tensor(res_token['input_ids']), torch.tensor(res_token['attention_mask']))
             res_hidden = res.last_hidden_state[:,0,:]
             st.write("Correct answer: "+ answers[idx])
             std_token = tokenizer(
-                [answers[idx]], max_length=256, padding='max_length', truncation=True)
+                [answers[idx]], max_length=128, padding='max_length', truncation=True)
             with torch.no_grad():
                 std = model(
                     torch.tensor(std_token['input_ids']), torch.tensor(std_token['attention_mask']))
