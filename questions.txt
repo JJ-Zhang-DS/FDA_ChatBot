@@ -1,0 +1,7 @@
+What are adaptive designs for medical device clinical study
+How treatment policy strategy is used for Addressing Intercurrent Events when Defining the Clinical Question of Interest
+What is a predictive distribution?
+What is exchangeability?
+How to determine the sample size when using Bayesian method for a clinical trial
+How to obtain Operating Characteristics of the Bayesian trial
+What are Noninferiority Trials 
