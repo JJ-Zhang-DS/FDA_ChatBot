@@ -6,3 +6,4 @@ pypdf
 pandas==1.3.5
 scikit-learn==1.1.0
 hugchat==0.0.8
+transformers
