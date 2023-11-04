@@ -37,11 +37,11 @@ if "chat_engine" not in st.session_state.keys(): # Initialize the chat engine
 
 questions = []
 answers = []
-with open("../questions.txt", 'r') as f:
+with open("./questions.txt", 'r') as f:
     for line in f.readlines():
         print(line)
         questions.append(line.split('\n')[0])
-with open("../answers.txt", 'r') as f:
+with open("./answers.txt", 'r') as f:
     for line in f.readlines():
         print(line)
         answers.append(line.split('\n')[0])
