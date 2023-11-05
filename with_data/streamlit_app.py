@@ -1,8 +1,11 @@
 import streamlit as st
-from llama_index import VectorStoreIndex, ServiceContext, Document
+from llama_index import VectorStoreIndex, ServiceContext, Document, get_response_synthesizer
 from llama_index.llms import OpenAI
 import openai
 from llama_index import SimpleDirectoryReader
+from llama_index.query_engine import RetrieverQueryEngine
+from llama_index.retrievers import VectorIndexRetriever
+import time
 
 st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
@@ -25,10 +28,26 @@ def load_data():
 
 index = load_data()
 
+# configure retriever
+retriever = VectorIndexRetriever(
+    index=index,
+    similarity_top_k=2,
+)
+
+# configure response synthesizer
+response_synthesizer = get_response_synthesizer(
+    response_mode="compact",)
+
+# assemble query engine
+
 if "chat_engine" not in st.session_state.keys(): # Initialize the chat engine
-        st.session_state.chat_engine = index.as_query_engine() #chat_mode="condense_question", verbose=True)
+        st.session_state.chat_engine = RetrieverQueryEngine(
+            retriever=retriever,
+            response_synthesizer=response_synthesizer,) #chat_mode="condense_question", verbose=True)
+
 
 if prompt := st.chat_input("Your question"): # Prompt for user input and save to chat history
+    start = time.time()
     st.session_state.messages.append({"role": "user", "content": prompt})
 
 for message in st.session_state.messages: # Display the prior chat messages
@@ -41,5 +60,6 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("Thinking..."):
             response = st.session_state.chat_engine.query(prompt)
             st.write(response.response)
+            st.write("Retrieval Time: "+str(round(time.time()-start, 3))+"s")
             message = {"role": "assistant", "content": response.response}
             st.session_state.messages.append(message) # Add response to message history

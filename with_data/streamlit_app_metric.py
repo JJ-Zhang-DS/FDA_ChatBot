@@ -1,5 +1,5 @@
 import streamlit as st
-from llama_index import VectorStoreIndex, ServiceContext, Document
+from llama_index import TreeIndex, VectorStoreIndex, ServiceContext, Document, get_response_synthesizer
 from llama_index.llms import OpenAI
 import openai
 from llama_index import SimpleDirectoryReader
@@ -8,6 +8,10 @@ import torch.nn as nn
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+import time
+from llama_index.retrievers import VectorIndexRetriever,TreeAllLeafRetriever
+from llama_index.query_engine import RetrieverQueryEngine
+
 
 st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
@@ -30,8 +34,22 @@ def load_data():
 
 index = load_data()
 
+# configure retriever
+retriever = VectorIndexRetriever(
+    index=index,
+    similarity_top_k=2,
+)
+
+# configure response synthesizer
+response_synthesizer = get_response_synthesizer(
+    response_mode="compact",)
+
+# assemble query engine
+
 if "chat_engine" not in st.session_state.keys(): # Initialize the chat engine
-        st.session_state.chat_engine = index.as_query_engine() #chat_mode="condense_question", verbose=True)
+        st.session_state.chat_engine = RetrieverQueryEngine(
+            retriever=retriever,
+            response_synthesizer=response_synthesizer,) #chat_mode="condense_question", verbose=True)
 
 # here will be the test for example questions
 
@@ -69,6 +87,7 @@ cossim_total = []
 sorry_words = ["sorry", "not mention", "not provide", "no information", "no data"]
 
 for idx, question in enumerate(questions):
+    start = time.time()
     prompt = question
  #   st.session_state.messages.append({"role": "user", "content": prompt})
  #   
@@ -80,6 +99,7 @@ for idx, question in enumerate(questions):
         with st.spinner("Thinking..."):
             response = st.session_state.chat_engine.query(prompt)
             st.write(response.response)
+            st.write("Retrieval Time: "+str(round(time.time()-start, 3))+"s")
             res_token = tokenizer(
                 [response.response], max_length=128, padding='max_length', truncation=True)
             with torch.no_grad():
