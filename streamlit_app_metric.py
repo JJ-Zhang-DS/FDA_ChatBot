@@ -13,9 +13,9 @@ from llama_index.retrievers import VectorIndexRetriever,TreeAllLeafRetriever
 from llama_index.query_engine import RetrieverQueryEngine
 
 
-st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title="Chat with the FDA docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
-st.title("Chat with the Streamlit docs, powered by LlamaIndex 💬🦙")
+st.title("Chat with the FDA docs, powered by LlamaIndex 💬🦙")
 st.info("Check out the full tutorial to build this app in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
          
 if "messages" not in st.session_state.keys(): # Initialize the chat messages history
@@ -25,7 +25,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
 
 #@st.cache_resource(show_spinner=False)
 def load_data():
-    with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
+    with st.spinner(text="Loading and indexing the FDA docs – hang tight! This should take 1-2 minutes."):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
         service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt="Keep your answers technical and based on facts – do not hallucinate features."))
@@ -55,10 +55,10 @@ if "chat_engine" not in st.session_state.keys(): # Initialize the chat engine
 
 questions = []
 answers = []
-with open("../questions.txt", 'r') as f:
+with open("./questions.txt", 'r') as f:
     for line in f.readlines():
         questions.append(line.split('\n')[0])
-with open("../answers.txt", 'r') as f:
+with open("./answers.txt", 'r') as f:
     for line in f.readlines():
         answers.append(line.split('\n')[0])
 
