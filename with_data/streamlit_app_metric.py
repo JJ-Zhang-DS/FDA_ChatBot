@@ -94,10 +94,10 @@ for idx, question in enumerate(questions):
                     torch.tensor(std_token['input_ids']), torch.tensor(std_token['attention_mask']))
             std_hidden = std.last_hidden_state[:,0,:]
             cossim = [[1]]
-            for sorry in sorry_words:
-                if sorry in response.response:
-                    cossim = [[0]]
-                    break
+#            for sorry in sorry_words:
+#                if sorry in response.response:
+#                    cossim = [[0]]
+#                    break
             
             if cossim[0][0] == 1:
                 cossim = cosine_similarity(res_hidden.numpy(), std_hidden.numpy())

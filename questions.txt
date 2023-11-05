@@ -7,5 +7,4 @@ What are Noninferiority Trials
 What are the methods for the calculation of the between subject coefficient of variation as stated in  SOP- BMD-4002?
 What level of precision of PK Parameters from WinNonlin is needed for PK reporting?
 List Non-numeric PK Concentration values and their meaning
-Which guidance file provides the standards for imputation of non-numeric PK concentration values?
 What are the Trial Master File content and responsible role related to required documentation for randomization process?
