@@ -2,6 +2,10 @@ What are adaptive designs for medical device clinical study
 How treatment policy strategy is used for Addressing Intercurrent Events when Defining the Clinical Question of Interest
 What is a predictive distribution?
 What is exchangeability?
-How to determine the sample size when using Bayesian method for a clinical trial
-How to obtain Operating Characteristics of the Bayesian trial
+How to determine the sample size when using Bayesian method for a clinical trial:
 What are Noninferiority Trials 
+What are the methods for the calculation of the between subject coefficient of variation as stated in  SOP- BMD-4002?
+What level of precision of PK Parameters from WinNonlin is needed for PK reporting?
+List Non-numeric PK Concentration values and their meaning
+Which guidance file provides the standards for imputation of non-numeric PK concentration values?
+What are the Trial Master File content and responsible role related to required documentation for randomization process?
