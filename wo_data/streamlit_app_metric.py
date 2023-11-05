@@ -24,14 +24,14 @@ def load_data():
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0, system_prompt="Keep your answers technical and based on facts – do not hallucinate features."))
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt="Keep your answers technical and based on facts – do not hallucinate features."))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
         return index
 
 index = load_data()
 
 if "chat_engine" not in st.session_state.keys(): # Initialize the chat engine
-        st.session_state.chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
+        st.session_state.chat_engine = index.as_query_engine() #chat_mode="condense_question", verbose=True)
 
 # here will be the test for example questions
 
@@ -67,6 +67,7 @@ tokenizer = BertTokenizer.from_pretrained('bert-large-uncased')
 model = BertModel.from_pretrained('bert-large-uncased')
 cossim_total = []
 sorry_words = ["sorry", "not mention", "not provide", "no information", "no data"]
+
 for idx, question in enumerate(questions):
     prompt = question
  #   st.session_state.messages.append({"role": "user", "content": prompt})
@@ -77,7 +78,7 @@ for idx, question in enumerate(questions):
         st.write(prompt)
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = st.session_state.chat_engine.chat(prompt)
+            response = st.session_state.chat_engine.query(prompt)
             st.write(response.response)
             res_token = tokenizer(
                 [response.response], max_length=128, padding='max_length', truncation=True)
