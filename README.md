@@ -1,4 +1,3 @@
-# FDA_STAT_ChatBot 
 
 # FDA_STAT_ChatBot
 
